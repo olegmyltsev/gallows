@@ -19,7 +19,7 @@
 
     <div class="input">
         <input type="text" id="letter" maxlength="1">
-        <img id="arrow" src="icons/arrow.png">
+        <div id="arrow">✔</div>
     </div>
     <div class="help">
 
@@ -84,16 +84,16 @@
             }
             if (right === true) { attempts-- }
 
-            usedletters = usedletters  + guess + ", "
+            usedletters = usedletters  + guess + "   "
 
         }
 
         function bg_none() {
-            $("#arrow").css("background", "none")
+            $("#arrow").css("background-color", "rgb(0,210,106)")
         }
 
         $('#arrow').click(function () {
-            $('#arrow').css("background-color", "rgba(0, 153, 255, 0.4)")
+            $('#arrow').css("background-color", "rgba(0, 184, 92)")
             setTimeout(bg_none, 200)
         })
 

@@ -131,7 +131,8 @@ body {
     border-radius: 0 2px 2px 0;
     border-left: 0;
     text-align: center;
-    font-size: 90px;
+    font-size: 65px;
+    color: #ffff;
     width: 90px;
     cursor: pointer;
     
@@ -176,7 +177,7 @@ body {
     margin-top: 5px;
     padding: 2px;
     font-size: 80px;
-    color: red;
+    color: red
 }
 
 .restart_position{

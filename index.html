@@ -19,7 +19,7 @@
 
     <div class="input">
         <input type="text" id="letter" maxlength="1">
-        <div id="arrow">✔</div>
+        <button id="arrow">✔</button>
     </div>
     <div class="help">
 
@@ -84,7 +84,7 @@
             }
             if (right === true) { attempts-- }
 
-            usedletters = usedletters  + guess + "   "
+            usedletters = usedletters  + guess + ",   "
 
         }
 
@@ -106,7 +106,8 @@
 
             }
             if (unsolvedLetters === 0) {
-                $("#congratulations").text("Поздравляю, было загаданно слово: " + randomWord)
+
+                $("#congratulations").text("Поздравляю, было загаданно слово: " + randomWord).css("color", "green")
             }
 
             else if (attempts === 0 && unsolvedLetters !== 0) {

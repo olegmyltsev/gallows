@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виселица</title>
+    <link rel="stylesheet" href="CSS/normalize.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1 class="title">Отгадай животное</h1>
+    <div class="line"></div>
+    <div class="header_position">
+        <div class="header">Введите букву</div>
+    </div>
+
+    <div class="input">
+        <input type="text" id="letter" maxlength="1">
+        <button id="arrow">✔</button>
+    </div>
+    <div class="help">
+
+
+        <div class="hidden_word">Загаданное животное: <br>
+            <span id="word"></span>
+        </div>
+
+
+
+        <div class="attempts_styile">Попыток осталось: <span id="attempts"> 10 </span></div>
+        <div class="used_letters_text">Использованные буквы: <span id="used_letters"></span></div>
+
+        <div id="congratulations"></div>
+
+
+        <div class="restart_position">
+            <img id="restart" src="Icons/restart.png " onclick="location.reload();" alt="f">
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+    <script>
+        var words = [
+            "корова",
+            "мышь",
+            "лев",
+            "кот",
+            "собака",
+        ];
+
+        var randomWord = words[Math.floor(Math.random() * words.length)]
+
+        var emptyArray = []
+
+        for (var i = 0; i < randomWord.length; i++) {
+            emptyArray[i] = "_"
+        }
+
+
+
+        $("#word").text(emptyArray.join(" "))
+
+        attempts = 10
+        remainingLetters = randomWord.length
+
+        var unsolvedLetters = randomWord.length
+        var usedletters = ""
+        var right = true
+        function cycle(guess) {
+            right = true
+            guess = guess.toLowerCase()
+            for (var j = 0; j < remainingLetters; j++) {
+                if (randomWord[j] === guess && emptyArray[j] === "_") {
+                    emptyArray[j] = guess
+                    right = false
+                    unsolvedLetters--
+                }
+
+            }
+            if (right === true) { attempts-- }
+
+            usedletters = usedletters + guess + ",   "
+
+        }
+
+        function bg_none() {
+            $("#arrow").css("background-color", "rgb(0,210,106)")
+        }
+
+        $('#arrow').click(function () {
+            $('#arrow').css("background-color", "rgba(0, 184, 92)")
+            setTimeout(bg_none, 200)
+        })
+
+        $('#arrow').click(function () {
+
+            if (attempts > 0) {
+                var guess = $('#letter').val()
+                cycle(guess)
+                $("#word").text(emptyArray.join(" "))
+
+            }
+            if (unsolvedLetters === 0) {
+
+                $("#congratulations").text("Поздравляю, было загаданно слово: " + randomWord).css("color", "green")
+            }
+
+            else if (attempts === 0 && unsolvedLetters !== 0) {
+                $("#congratulations").text("Вы проиграли")
+                $(".restart_position").append('')
+            }
+
+            $("#attempts").text(attempts)
+
+            $('#letter').val("").focus()
+
+            $("#used_letters").text(usedletters)
+        });
+    </script>
+
+</body>
+
+</html>

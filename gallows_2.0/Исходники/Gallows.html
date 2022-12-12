@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <title>Виселица</title>
+    <link rel="stylesheet" type="text/css" href="CSS/styile.css">
+</head>
+
+<body>
+    <h1>kjdkfkddvd</h1>
+    <script>
+
+        //Список слов
+        var words = [
+            "пот",
+            "гол",
+            "торт",
+            "ром",
+            "кино",
+            "море",
+            "рука",
+            "кружка"
+        ];
+
+        //Случайное слово
+        var word = words[Math.floor(Math.random() * words.length)];
+
+        //Итоговый массив
+        var emptyArray = [];
+        for (var i = 0; i < word.length; i++) {
+            emptyArray[i] = "_"
+        };
+        alert(emptyArray.join(" "));
+
+        //Оставшиеся буквы
+        var remainingLetters = word.length;
+
+        //Количество попыток
+        var attempts = 10;
+
+        //Основной игровой цикл
+        while (remainingLetters > 0 && attempts > 0) {
+            var guess = prompt("Угадайте букву, или нажмите 'Отмена' для выхода из игры")
+            if (guess === null) {
+                break;
+
+            } else if (guess.length !== 1) {
+                alert("Пожалуйста, введите одну букву.")
+
+            } else if (guess.length === 1) {
+                for (var j = 0; j < word.length; j++) {
+                    guess = guess.toLowerCase()
+                    if (word[j] === guess && emptyArray[j] === "_") {
+                        emptyArray[j] = guess
+                        remainingLetters--
+                        alert(emptyArray.join(" "))
+                    }
+                }
+
+            }
+            //Конец игры
+            attempts--
+            alert("Попыток осталось:" + attempts + ".")
+            if (attempts === 0) {
+                alert('Вы проиграли. =(')
+            } else if (remainingLetters === 0) {
+                alert("Отлично! Было загадано слово '" + word + "'")
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>

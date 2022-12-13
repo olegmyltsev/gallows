@@ -1,6 +1,3 @@
-@font-face
-    font-family: "Comfortaa"
-    src: url(../fonts/Comfortaa-VariableFont_wght.ttf)
 
 @font-face
     font-family: "Azov"
@@ -9,88 +6,55 @@
 *
     outline: none
     color: #2c21aed1
+    font-family: Azov
 
 body
     background-image: url(../bg/pensel.jpeg)
     background-size: 250px
-    font-family: Azov
     min-height: 100vh
 
     .bg_fill
-        padding: 0 100px 0 100px
         background: #fff4e3c9
         min-height: 100vh
         display: flex
         justify-content: center
         .content
             background-image: url(../bg/bg.jpg)
-            display: inline-block
             width: 750px
-            padding: 0px 30px
 
-            header
+            h1
+                text-align: center
 
-                h1
-                    text-align: center
-                    margin: 0
-                    padding: 10px
-                    min-width: 690px
-
-            .input_group
-                width: auto
-                display: flex
-                justify-content: center
-                font-size: 60px
-                padding-bottom: 10px
-
-                .input_text
-                    border: 1px solid #13c100
-                    border-radius: 5px 0px 0px 5px
-                    width: 1em
-                    height: 1em
-                    text-align: center
-
-                .input_arrow
-                    width: 1em
-                    border-radius: 0px 5px 5px 0px
-                    background: #13c100
-
-                    &:active
-                        background-color: #1d9100
-            .canvas_position
-                display: flex
-                justify-content: center
-                margin-bottom: 10px
+            #canvas
+                display: block
+                margin: 10px auto
 
             .attempts
                 display: flex
                 justify-content: space-between
                 .attempts_text
-                    width: 160px
                     font-size: 20px
-                .attempts_left
-                    color: #ff0000
-                .congratulations
+                    .attempts_left
+                        color: #ff0000
+
+                .game_over
                     display: inline
                     width: 160px
                     font-size: 20px
                     color: #ff0000
+
                 .restart_wrapper
-                    width: 160px
                     #restart
-                        display: block
-                        margin-left: auto
                         height: 30px
 
             .letters
                 text-align: center
                 font-size: 50px
-                margin-top: 10px
 
             .buttons
                 font-size: 20px
                 display: flex
-                justify-content: center
+                justify-content: space-around
                 flex-wrap: wrap
 
                 .btn
@@ -112,3 +76,4 @@ body
 
                     &:disabled
                         color: #ff0000a8
+                        &::after

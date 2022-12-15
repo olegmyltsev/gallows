@@ -15,20 +15,10 @@
     <div class="bg_fill">
         <div class="content">
 
-            <header>
-                <h1>Отгадай страну</h1>
-            </header>
+            <h1>Отгадай страну</h1>
 
+            <canvas id="canvas" height="255" width="215"></canvas>
 
-
-            <!-- <div class="input_group">
-                <input class="input_text" type="text" maxlength="1">
-                <input type="image" id="arrow" src="Icons/arrow.svg" class="input_arrow">
-            </div> -->
-
-            <div class="canvas_position">
-                <canvas id="canvas" height="255" width="215"></canvas>
-            </div>
 
             <div class="attempts">
 
@@ -36,13 +26,13 @@
                     Попыток <span class="attempts_left">10</span>
                 </div>
 
-                <div class="congratulations"></div>
-
                 <div class="restart_wrapper">
-                    <img id='restart' src='Icons/restart.svg' onclick="location.reload();">
+                    <img id='restart' src='Icons/restart.png' onclick="location.reload();">
                 </div>
 
             </div>
+
+            <div class="game_over"></div>
 
             <div class="letters"></div>
 
@@ -81,8 +71,6 @@
                 <button class="btn" id="letter_32">ю</button>
                 <button class="btn" id="letter_33">я</button>
             </div>
-
-
         </div>
     </div>
 
@@ -303,12 +291,11 @@
                 gallows()
             }
 
-            console.log(emptyArray)
             if (errors > 0) { $(".letters").text(emptyArray.join(" ")) }
             else { $(".letters").text(randomWord) }
 
             if (lettersLeft === 0 && errors > 0) {
-                $(".congratulations").text("Вы выиграли!").css("color", "green")
+                $(".game_over").text("Вы выиграли!").css("color", "green")
             }
 
         }
@@ -328,7 +315,7 @@
 
             if (errors <= 0) {
                 $(".btn").attr('disabled', true)
-                $(".congratulations").text("Вы проиграли!")
+                $(".game_over").text("Вы проиграли!")
 
             }
 
